@@ -6,7 +6,7 @@
   const app = document.getElementById('app');
   const HB = window.HB;
   const H = HB.hoofdstukken;
-  let viewer = null, viewerKlaar = null, huidig = null;
+  let viewer = null, viewerKlaar = null, huidig = null, sceneTeller = 0;
 
   // Voortgang (alleen deze browser)
   const OPSLAG = 'skittle-sorter-guide-done';
@@ -124,18 +124,23 @@
     }
     if (!s.scene) { el.classList.add('scene--leeg'); melding.innerHTML = '<span>No 3D view for this step.<br>Follow the text and the lists.</span>'; return; }
     // De viewer (canvas) wordt hergebruikt tussen stappen: verplaats hem naar de nieuwe scene.
-    const start = viewer ? Promise.resolve() : (viewerKlaar = viewerKlaar || (async () => {
+    // Altijd op viewerKlaar wachten: 'viewer' bestaat al terwijl three.js nog laadt (anders: THREE undefined
+    // als je tijdens het eerste laden al naar een andere stap gaat).
+    const mijn = ++sceneTeller;
+    const start = viewerKlaar = viewerKlaar || (async () => {
       const houder = document.createElement('div');
       houder.style.cssText = 'position:absolute;inset:0';
-      viewer = new window.HBViewer(houder, f => { const t = document.getElementById('tijd'); if (t) t.value = Math.round(f * 1000); });
-      viewer.houder = houder;
-      window.HB_VIEWER = viewer;   // voor debuggen in de console
-      await viewer.init();
-    })());
+      const v = new window.HBViewer(houder, f => { const t = document.getElementById('tijd'); if (t) t.value = Math.round(f * 1000); });
+      v.houder = houder;
+      await v.init();
+      viewer = window.HB_VIEWER = v;   // HB_VIEWER: voor debuggen in de console
+    })().catch(err => { viewerKlaar = null; throw err; });   // mislukt laden: volgende stap probeert opnieuw
     start.then(async () => {
+      if (mijn !== sceneTeller) return;   // intussen naar een andere stap gegaan
       el.insertBefore(viewer.houder, el.firstChild);
       viewer.maat();
       await viewer.toon(s.scene);
+      if (mijn !== sceneTeller) return;
       melding.remove();
       document.getElementById('labels').innerHTML = (s.scene.labels || []).map(l => `<span class="${l.startsWith('+') ? 'n' : ''}">${esc(l.replace(/^\+/, ''))}</span>`).join('');
       const speel = document.getElementById('knopSpeel');
