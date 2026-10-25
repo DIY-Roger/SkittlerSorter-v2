@@ -50,3 +50,8 @@ The code includes basic serial commands for testing:
 test [servo number] [repeat count]
 validate
 turn
+
+## Build guide
+
+An interactive, step-by-step 3D build guide (English) lives in `Handleiding/web` and is published at
+https://diy-roger.com/projects/skittle-sorter/handleiding/ . Print files: https://makerworld.com/en/models/2753363-skittler-sorter-v2

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 200 200" role="img" aria-label="DIY_Roger beeldmerk">
+<defs><clipPath id="ih"><polygon points="168,100 134,159 66,159 32,100 66,41 134,41"></polygon></clipPath></defs>
+<polygon points="196,100 148,183 52,183 4,100 52,17 148,17" fill="#15140F"></polygon>
+<polygon points="168,100 134,159 66,159 32,100 66,41 134,41" fill="#FEC600"></polygon>
+<g clip-path="url(#ih)" stroke="#15140F" stroke-width="12"><line x1="-136" y1="200" x2="64" y2="0"></line><line x1="-102" y1="200" x2="98" y2="0"></line><line x1="-68" y1="200" x2="132" y2="0"></line><line x1="-34" y1="200" x2="166" y2="0"></line><line x1="0" y1="200" x2="200" y2="0"></line><line x1="34" y1="200" x2="234" y2="0"></line><line x1="68" y1="200" x2="268" y2="0"></line><line x1="102" y1="200" x2="302" y2="0"></line><line x1="136" y1="200" x2="336" y2="0"></line></g>
+<polygon points="168,100 134,159 66,159 32,100 66,41 134,41" fill="none" stroke="#FEC600" stroke-width="7"></polygon>
+<path d="M121.372 103.656L128.860 111.872L128.860 136L114.716 136L114.716 115.096L108.476 108.128L85.804 108.128L85.804 136L71.660 136L71.660 63.200L117.316 63.200L128.444 74.432L128.444 96.480L121.372 103.656ZM85.804 75.056L85.804 96.480L110.868 96.480L114.508 92.840L114.508 78.696L110.868 75.056L85.804 75.056Z" fill="#15140F" stroke="#FEC600" stroke-width="9" stroke-linejoin="round" paint-order="stroke"></path>
+</svg>

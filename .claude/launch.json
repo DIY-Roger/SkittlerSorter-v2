@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "handleiding",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8766",
+        "--directory",
+        "Handleiding/web"
+      ],
+      "port": 8766
+    },
+    {
+      "name": "site",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "D:/DIY_Roger/Marketing DIY-Roger/website/server-static.js"
+      ],
+      "port": 3000
+    }
+  ]
+}
